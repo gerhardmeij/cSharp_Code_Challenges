@@ -12,43 +12,40 @@ namespace _01_Take_a_Ten_Minutes_Walk
         {
             if(walk.Length > 10 == false && walk.Length < 10 == false)
             {
-                var secondHalfOfJourney = (walk.Length / 2);
-                for (int i = 0; i < (walk.Length/2); i++)
+                var northWalkProgress = 0;
+                var southWalkProgress = 0;
+                var eastWalkProgress = 0;
+                var westWalkProgress = 0;
+
+                for (int i = 0; i < walk.Length; i++)
                 {
                     switch (walk[i])
                     {
                         case "n":
-                            if (walk[secondHalfOfJourney] != "s")
-                            {
-                                return false;
-                            }
+                            northWalkProgress++;
                             break;
                         case "s":
-                            if (walk[secondHalfOfJourney] != "n")
-                            {
-                                return false;
-                            }
+                            southWalkProgress++;
                             break;
                         case "e":
-                            if (walk[secondHalfOfJourney] != "w")
-                            {
-                                return false;
-                            }
+                            eastWalkProgress++;
                             break;
                         case "w":
-                            if (walk[secondHalfOfJourney] != "e")
-                            {
-                                return false;
-                            }
+                            westWalkProgress++;
                             break;
                         default:
                             return false;
                     }
-                    secondHalfOfJourney++;
-
                 }
-
-                return true;
+                if (northWalkProgress == southWalkProgress && eastWalkProgress == westWalkProgress)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
             }
             else
             {
